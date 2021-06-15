@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:lightningometry"
+
+    - path: "exec/Main.hs"
+      component: "lightningometry:exe:lightningometry"

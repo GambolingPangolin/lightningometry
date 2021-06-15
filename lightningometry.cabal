@@ -1,0 +1,54 @@
+cabal-version:      2.4
+name:               lightningometry
+version:            0.1.0.0
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Ian Shipman
+maintainer:         ics@gambolingpangolin.com
+extra-source-files: CHANGELOG.md
+
+common core
+    default-language: Haskell2010
+
+    ghc-options:
+        -Wall
+        -Wunused-packages
+        -fno-warn-unused-do-bind
+        -fno-warn-type-defaults
+
+    build-depends:
+          base >=4.12 && <4.16
+        , containers >=0.6 && <0.7
+        , text >=1.2 && <1.3
+
+library
+    import: core
+
+    hs-source-dirs: src
+
+    exposed-modules:
+        Lightningometry
+        Lightningometry.Analyze
+        Lightningometry.Annotate
+        Lightningometry.Graph
+        Lightningometry.Options
+        Lightningometry.Report
+        Lightningometry.Utils
+
+    build-depends:
+          aeson >=1.4 && <1.6
+        , optparse-applicative >=0.14 && <0.17
+        , time >=1.8 && <1.12
+
+executable lightningometry
+    import: core
+
+    main-is: Main.hs
+
+    hs-source-dirs: exec
+    ghc-options: -O2
+
+    build-depends:
+          bytestring >=0.10 && <0.12
+        , lightningometry
+        , yaml ^>=0.11
